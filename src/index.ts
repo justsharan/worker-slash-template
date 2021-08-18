@@ -1,7 +1,8 @@
-import { SlashInteraction } from './structures/Interaction'
-import { Interaction, InteractionType, SlashData } from './types/Interaction'
+import { SlashInteraction, ComponentInteraction } from './structures/Interaction'
+import { Interaction, InteractionType, SlashData, ComponentData } from './types/Interaction'
 import verify from './verify'
 import commands from './commands/'
+import componentActions from './components/'
 
 declare global {
   const PUBLIC_KEY: string
@@ -42,7 +43,18 @@ async function handle(request: Request, wait: (f: any) => void): Promise<Respons
       }
     break
   case InteractionType.MessageComponent:
-    // TODO: Handle components
+    /* eslint-disable-next-line no-case-declarations */
+    const incomingComponent = payload as Interaction<ComponentData>
+    for (const [name, componentAction] of Object.entries(componentActions))  {
+      if (name === incomingComponent.message.interaction.name) {
+        const reply = await componentAction(new ComponentInteraction(incomingComponent), wait)
+        return new Response(JSON.stringify(reply), {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+      }
+    }
     break
   }
 
