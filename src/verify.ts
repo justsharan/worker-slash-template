@@ -1,11 +1,11 @@
-import nacl from 'tweetnacl';
+import nacl from 'tweetnacl'
 
 function decodeHex(str: string): number[] {
-  const matches = str.match(/.{1,2}/g);
+  const matches = str.match(/.{1,2}/g)
   if (matches == null) {
-    throw new Error('Value is not a valid hex string');
+    throw new Error('Value is not a valid hex string')
   }
-  return matches.map(byte => Number.parseInt(byte, 16));
+  return matches.map(byte => Number.parseInt(byte, 16))
 }
 
 export default function verify(
@@ -15,12 +15,12 @@ export default function verify(
   publicKey: string,
 ): boolean {
   try {
-    const decodedSig = new Uint8Array(decodeHex(signature));
-    const decodedPubKey = new Uint8Array(decodeHex(publicKey));
-    const message = new TextEncoder().encode(timestamp + body);
+    const decodedSig = new Uint8Array(decodeHex(signature))
+    const decodedPubKey = new Uint8Array(decodeHex(publicKey))
+    const message = new TextEncoder().encode(timestamp + body)
 
-    return nacl.sign.detached.verify(message, decodedSig, decodedPubKey);
+    return nacl.sign.detached.verify(message, decodedSig, decodedPubKey)
   } catch(err) {
-    return false;
+    return false
   }
 }

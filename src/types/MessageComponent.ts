@@ -1,5 +1,5 @@
 export interface MessageComponent {
-  type: ComponentType;
+  type: ComponentType
 }
 
 export enum ComponentType {
@@ -9,18 +9,18 @@ export enum ComponentType {
 }
 
 export interface ActionRow extends MessageComponent {
-  type: ComponentType.ActionRow;
-  components: (Button | SelectMenu)[];
+  type: ComponentType.ActionRow
+  components: (Button | SelectMenu)[]
 }
 
 export interface Button extends MessageComponent {
-  type: ComponentType.Button;
-  style: ButtonStyle;
-  label?: string;
-  emoji?: Partial<PartialEmoji>;
-  custom_id: string;
-  url?: string;
-  disabled?: boolean;
+  type: ComponentType.Button
+  style: ButtonStyle
+  label?: string
+  emoji?: Partial<PartialEmoji>
+  custom_id: string
+  url?: string
+  disabled?: boolean
 }
 
 export enum ButtonStyle {
@@ -32,25 +32,25 @@ export enum ButtonStyle {
 }
 
 export interface PartialEmoji {
-  id: string;
-  name: string;
-  animated: boolean;
+  id: string
+  name: string
+  animated: boolean
 }
 
 export interface SelectMenu extends MessageComponent {
-  type: ComponentType.SelectMenu;
-  custom_id: string;
-  options: SelectOption[];
-  placeholder?: string;
-  min_values?: number;
-  max_values?: number;
-  disabled?: boolean;
+  type: ComponentType.SelectMenu
+  custom_id: string
+  options: SelectOption[]
+  placeholder?: string
+  min_values?: number
+  max_values?: number
+  disabled?: boolean
 }
 
 export interface SelectOption {
-  label: string;
-  value: string;
-  description?: string;
-  emoji?: PartialEmoji;
-  default?: boolean;
+  label: string
+  value: string
+  description?: string
+  emoji?: PartialEmoji
+  default?: boolean
 }
