@@ -1,4 +1,4 @@
-name = "workers-slash-template"
+name = "worker-slash-template"
 type = "javascript"
 zone_id = ""
 account_id = ""

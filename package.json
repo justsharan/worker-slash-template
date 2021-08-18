@@ -1,7 +1,7 @@
 {
-  "name": "worker-typescript-template",
+  "name": "worker-slash-template",
   "version": "1.0.0",
-  "description": "Cloudflare worker TypeScript template",
+  "description": "Cloudflare worker Discord interactions template using TypeScript",
   "main": "dist/worker.js",
   "scripts": {
     "build": "webpack",
